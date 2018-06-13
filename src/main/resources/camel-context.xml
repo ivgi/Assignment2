@@ -20,29 +20,6 @@
          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
-        <rest path="/say">
-            <get uri="/hello">
-                <to uri="direct:hello"/>
-            </get>
-            <get uri="/bye" consumes="application/json">
-                <to uri="direct:bye"/>
-            </get>
-            <post uri="/bye">
-                <to uri="mock:update"/>
-            </post>
-        </rest>
-        <route>
-            <from uri="direct:hello"/>
-            <transform>
-                <constant>Hello World</constant>
-            </transform>
-        </route>
-        <route>
-            <from uri="direct:bye"/>
-            <transform>
-                <constant>Bye World</constant>
-            </transform>
-        </route>
     </camelContext>
 
 </beans>

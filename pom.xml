@@ -73,6 +73,18 @@
             <version>5.15.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-swagger-java-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-validator</artifactId>
+                </exclusion>
+            </exclusions>
+            <version>${camel-version}</version>
+        </dependency>
+
         <!-- ActiveMQ client -->
         <dependency>
             <groupId>org.apache.activemq</groupId>

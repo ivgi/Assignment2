@@ -1,0 +1,14 @@
+<routes xmlns="http://camel.apache.org/schema/spring">
+    <route>
+        <from uri="direct:hello"/>
+        <transform>
+            <constant>Hello World</constant>
+        </transform>
+    </route>
+    <route>
+        <from uri="direct:bye"/>
+        <transform>
+            <constant>Bye World</constant>
+        </transform>
+    </route>
+</routes>
