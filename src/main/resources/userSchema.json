@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "User",
+  "description": "A user",
+  "type": "object",
+  "id": "userSchema",
+  "properties": {
+    "id": {
+      "description": "The unique identifier of a user",
+      "type": "integer"
+    },
+    "name": {
+      "description": "Name of the user",
+      "type": "string"
+    },
+    "age": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "age"
+  ]
+}

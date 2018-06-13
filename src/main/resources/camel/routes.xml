@@ -1,14 +1,15 @@
 <routes xmlns="http://camel.apache.org/schema/spring">
     <route>
-        <from uri="direct:hello"/>
-        <transform>
-            <constant>Hello World</constant>
-        </transform>
-    </route>
-    <route>
-        <from uri="direct:bye"/>
-        <transform>
-            <constant>Bye World</constant>
-        </transform>
+        <from uri="direct:push"/>
+        <doTry>
+            <to uri="json-validator:userSchema.json"/>
+            <transform>
+                <constant>{"text":"Your message has been submitted for further processing"}</constant>
+            </transform>
+            <doCatch>
+                <exception>org.apache.camel.component.jsonvalidator.JsonValidationException</exception>
+                <process ref="jsonValidationProcessor"/>
+            </doCatch>
+        </doTry>
     </route>
 </routes>
