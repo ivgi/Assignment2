@@ -4,7 +4,7 @@ package demo;
  * Pojo for JSON endpoint.
  * Created by IVAN on 13.6.2018 г..
  */
-public class UserPojo {
+public class User {
     private Integer id;
     private String name;
     private Integer age;
@@ -31,5 +31,14 @@ public class UserPojo {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

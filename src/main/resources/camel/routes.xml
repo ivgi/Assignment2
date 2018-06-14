@@ -1,8 +1,12 @@
 <routes xmlns="http://camel.apache.org/schema/spring">
-    <route>
+    <route streamCache="true">
         <from uri="direct:push"/>
         <doTry>
             <to uri="json-validator:userSchema.json"/>
+            <unmarshal>
+                <json library="Jackson" unmarshalTypeName="demo.User"/>
+            </unmarshal>
+            <bean ref="userAnonymizer" method="anonymize"/>
             <transform>
                 <constant>{"text":"Your message has been submitted for further processing"}</constant>
             </transform>
