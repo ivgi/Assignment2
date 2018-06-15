@@ -6,12 +6,13 @@ import org.springframework.stereotype.Component;
 public class UserAnonymizer {
 
     public User anonymize(User user) {
-        System.out.println("Anonimizing user: " + user.toString());
-        User anonymousUser = new User();
-        anonymousUser.setAge(user.getAge());
-        anonymousUser.setId(user.getId());
         user.setName("Anonymous");
-        return anonymousUser;
+        return user;
+    }
+
+    public User deAnonymize(User user) {
+        user.setName("Ivan");
+        return user;
     }
 
 }

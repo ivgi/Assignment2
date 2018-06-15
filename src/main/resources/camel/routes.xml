@@ -7,6 +7,10 @@
                 <json library="Jackson" unmarshalTypeName="demo.User"/>
             </unmarshal>
             <bean ref="userAnonymizer" method="anonymize"/>
+            <marshal ref="demo.User">
+                <json library="Jackson"/>
+            </marshal>
+            <wireTap uri="activemq:Users"/>
             <transform>
                 <constant>{"text":"Your message has been submitted for further processing"}</constant>
             </transform>
@@ -15,5 +19,12 @@
                 <process ref="jsonValidationProcessor"/>
             </doCatch>
         </doTry>
+    </route>
+    <route>
+        <from uri="activemq:Users"/>
+        <unmarshal>
+            <json library="Jackson" unmarshalTypeName="demo.User"/>
+        </unmarshal>
+        <bean ref="userAnonymizer" method="deAnonymize"/>
     </route>
 </routes>
