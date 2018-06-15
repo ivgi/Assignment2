@@ -1,13 +1,28 @@
 package demo;
 
-/**
- * Pojo for JSON endpoint.
- * Created by IVAN on 13.6.2018 г..
- */
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer dbId;
+    @Basic
     private Integer id;
+    @Basic
     private String name;
+    @Basic
     private Integer age;
+
+    public Integer getDbId() {
+        return dbId;
+    }
+
+    public void setDbId(Integer dbId) {
+        this.dbId = dbId;
+    }
 
     public Integer getId() {
         return id;
@@ -40,5 +55,22 @@ public class User {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(dbId, user.dbId) &&
+                Objects.equals(id, user.id) &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(age, user.age);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(dbId, id, name, age);
     }
 }

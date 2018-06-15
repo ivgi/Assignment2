@@ -23,15 +23,16 @@
 
     <dependencies>
 
-        <!-- spring-boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>
@@ -97,33 +98,13 @@
             <version>${camel-version}</version>
         </dependency>
 
-        <!-- ActiveMQ client -->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.activemq</groupId>-->
-            <!--<artifactId>activemq-client</artifactId>-->
-            <!--&lt;!&ndash; lets use JMS 2.0 api but camel-jms still works with ActiveMQ 5.x that is JMS 1.1 only &ndash;&gt;-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>org.apache.geronimo.specs</groupId>-->
-                    <!--<artifactId>geronimo-jms_1.1_spec</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-            <!--<version>5.15.4</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.activemq</groupId>-->
-            <!--<artifactId>activemq-pool</artifactId>-->
-            <!--&lt;!&ndash; lets use JMS 2.0 api but camel-jms still works with ActiveMQ 5.x that is JMS 1.1 only &ndash;&gt;-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>org.apache.geronimo.specs</groupId>-->
-                    <!--<artifactId>geronimo-jms_1.1_spec</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-            <!--<version>5.15.4</version>-->
-        <!--</dependency>-->
-
         <!-- TODO connect with MySql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.11</version>
+        </dependency>
+
         <!-- Embedded db -->
         <dependency>
             <groupId>com.h2database</groupId>
