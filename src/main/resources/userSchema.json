@@ -5,21 +5,18 @@
   "type": "object",
   "id": "userSchema",
   "properties": {
-    "id": {
-      "description": "The unique identifier of a user",
-      "type": "integer"
+    "numIterations": {
+      "description": "Number of iterations of the game board.",
+      "type": "integer",
+      "maximum": 100
     },
-    "name": {
-      "description": "Name of the user",
-      "type": "string"
-    },
-    "age": {
-      "type": "integer"
+    "liveCellsPercent": {
+      "type": "integer",
+      "maximum": 100
     }
   },
   "required": [
-    "id",
-    "name",
-    "age"
+    "numIterations",
+    "liveCellsPercent"
   ]
 }

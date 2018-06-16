@@ -1,4 +1,4 @@
-package demo.gof;
+package demo.gol;
 
 /**
  * Represents the board of game of life. The board has dead cells and alive cells. It mutates infinitely.
@@ -105,8 +105,8 @@ public class Board {
      *
      * @return count of live cells
      */
-    public long countLiveCells() {
-        long count = 0;
+    public Integer countLiveCells() {
+        int count = 0;
         for (int h = 0; h < grid.length; h++) {
             for (int w = 0; w < grid[h].length; w++) {
                 if (isAlive(h, w)) {

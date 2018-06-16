@@ -4,15 +4,15 @@
         <doTry>
             <to uri="json-validator:userSchema.json"/>
             <unmarshal>
-                <json library="Jackson" unmarshalTypeName="demo.User"/>
+                <json library="Jackson" unmarshalTypeName="demo.gol.Input"/>
             </unmarshal>
-            <bean ref="userAnonymizer" method="anonymize"/>
-            <marshal ref="demo.User">
+            <bean ref="game" method="notify"/>
+            <marshal ref="demo.gol.Input">
                 <json library="Jackson"/>
             </marshal>
-            <wireTap uri="activemq:Users"/>
+            <wireTap uri="activemq:gol.input"/>
             <transform>
-                <constant>{"text":"Your message has been submitted for further processing"}</constant>
+                <constant>{"text":"Game of life started."}</constant>
             </transform>
             <doCatch>
                 <exception>org.apache.camel.component.jsonvalidator.JsonValidationException</exception>
@@ -21,11 +21,11 @@
         </doTry>
     </route>
     <route>
-        <from uri="activemq:Users"/>
+        <from uri="activemq:gol.input"/>
         <unmarshal>
-            <json library="Jackson" unmarshalTypeName="demo.User"/>
+            <json library="Jackson" unmarshalTypeName="demo.gol.Input"/>
         </unmarshal>
-        <bean ref="userAnonymizer" method="deAnonymize"/>
-        <to uri="jpa:demo.User"/>
+        <bean ref="game" method="play"/>
+        <to uri="jpa:demo.gol.Output"/>
     </route>
 </routes>

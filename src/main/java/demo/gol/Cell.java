@@ -1,4 +1,4 @@
-package demo.gof;
+package demo.gol;
 
 /**
  * Represents a cell on the board of game of life.
@@ -25,5 +25,13 @@ public class Cell {
 
     public boolean getState() {
         return state;
+    }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "state=" + state +
+                ", newState=" + newState +
+                '}';
     }
 }

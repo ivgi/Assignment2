@@ -1,4 +1,4 @@
-package demo.gof;
+package demo.gol;
 
 import org.junit.Test;
 
@@ -52,11 +52,11 @@ public class BoardTest {
                 {new Cell(true), new Cell(), new Cell(true)}
         };
         Board b = new Board(cells);
-        assertEquals(4, b.countLiveCells());
+        assertEquals(Integer.valueOf(4), b.countLiveCells());
 
         // Here all cells die. So count should be 0.
         b.update();
-        assertEquals(0, b.countLiveCells());
+        assertEquals(Integer.valueOf(0), b.countLiveCells());
     }
 
     @Test
