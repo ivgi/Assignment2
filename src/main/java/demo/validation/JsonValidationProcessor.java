@@ -1,4 +1,4 @@
-package demo;
+package demo.validation;
 
 import com.networknt.schema.ValidationMessage;
 import org.apache.camel.Exchange;

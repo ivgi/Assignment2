@@ -11,7 +11,7 @@ public class UserAnonymizer {
     }
 
     public User deAnonymize(User user) {
-        user.setName("Ivan");
+        user.setName("Know user");
         return user;
     }
 
