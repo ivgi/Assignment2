@@ -26,5 +26,6 @@
             <json library="Jackson" unmarshalTypeName="demo.User"/>
         </unmarshal>
         <bean ref="userAnonymizer" method="deAnonymize"/>
+        <to uri="jpa:demo.User"/>
     </route>
 </routes>
