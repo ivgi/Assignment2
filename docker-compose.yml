@@ -1,0 +1,21 @@
+mysql:
+  image: mysql:5.7
+  ports:
+    - 3307:3306
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: demo
+    MYSQL_USER: user
+    MYSQL_PASSWORD: user
+
+activemq:
+  image: webcenter/activemq:latest
+  ports:
+    - 8161:8161
+    - 61616:61616
+    - 61613:61613
+  environment:
+    ACTIVEMQ_NAME: amq
+    ACTIVEMQ_REMOVE_DEFAULT_ACCOUNT: 'False'
+    ACTIVEMQ_ADMIN_LOGIN: admin
+    ACTIVEMQ_ADMIN_PASSWORD: admin
