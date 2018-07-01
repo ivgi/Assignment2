@@ -2,7 +2,7 @@
     <route streamCache="true">
         <from uri="direct:push"/>
         <doTry>
-            <to uri="json-validator:userSchema.json"/>
+            <to uri="json-validator:schema.json"/>
             <unmarshal>
                 <json library="Jackson" unmarshalTypeName="demo.gol.Input"/>
             </unmarshal>

@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "User",
-  "description": "A user",
+  "title": "Input validation",
+  "description": "Game of Life Input",
   "type": "object",
-  "id": "userSchema",
+  "id": "schema",
   "properties": {
     "numIterations": {
       "description": "Number of iterations of the game board.",
