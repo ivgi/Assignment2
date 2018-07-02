@@ -1,4 +1,4 @@
-package demo.gol;
+package demo.config;
 
 import org.apache.camel.component.atmosphere.websocket.CamelWebSocketServlet;
 import org.atmosphere.cpr.ContainerInitializer;
