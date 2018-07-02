@@ -1,0 +1,18 @@
+<web-app>
+    <servlet>
+        <servlet-name>CamelServlet</servlet-name>
+        <display-name>Camel Http Transport Servlet</display-name>
+        <servlet-class>org.apache.camel.component.servlet.CamelHttpTransportServlet</servlet-class>
+        <init-param>
+            <param-name>async</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CamelServlet</servlet-name>
+        <url-pattern>/camel</url-pattern>
+    </servlet-mapping>
+</web-app>

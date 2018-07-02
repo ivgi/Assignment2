@@ -13,10 +13,6 @@ public class Game {
     private final int BOARD_HEIGHT = 10;
     private final int BOARD_WIDTH = 10;
 
-    public void notify(Input input) {
-        System.out.println("New game of life queued.");
-        System.out.println(input.toString());
-    }
 
     public Output play(Input input) {
         double liveCellsPercentFraction = ((double) input.getLiveCellsPercent()) / 100;

@@ -6,19 +6,23 @@
             <unmarshal>
                 <json library="Jackson" unmarshalTypeName="demo.gol.Input"/>
             </unmarshal>
-            <bean ref="game" method="notify"/>
+            <to uri="atmosphere-websocket:///push?sendToAll=true"/>
             <marshal ref="demo.gol.Input">
                 <json library="Jackson"/>
             </marshal>
             <wireTap uri="activemq:gol.input"/>
             <transform>
-                <constant>{"text":"Game of life started."}</constant>
+                <constant>{"response":"Message received successfully!"}</constant>
             </transform>
             <doCatch>
                 <exception>org.apache.camel.component.jsonvalidator.JsonValidationException</exception>
                 <process ref="jsonValidationProcessor"/>
             </doCatch>
         </doTry>
+    </route>
+    <route>
+        <from uri="atmosphere-websocket:///push"/>
+        <to uri="stream:out"/>
     </route>
     <route>
         <from uri="activemq:gol.input"/>

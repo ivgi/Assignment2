@@ -1,0 +1,25 @@
+<html>
+<meta charset="utf-8" />
+<h1>Messages Queued</h1>
+<p id="websocket_messages"></p>
+
+<script>
+    const SERVER_ENDPOINT = location.hostname + ":" + location.port;
+    const LISTENING_ON = "ws://" + SERVER_ENDPOINT + "/stream/push";
+
+    let connection = new WebSocket(LISTENING_ON);
+
+    connection.onerror = function (error) {
+        console.log('Error Logged: ' + error.message);
+    };
+
+    connection.onmessage = function (e) {
+        let text = document.getElementById("websocket_messages").innerText;
+        let currentTime = (new Date()).toLocaleTimeString();
+        document.getElementById("websocket_messages").innerText = text + "\n" + currentTime + ": " + e.data;
+        console.log(e.data);
+    };
+
+</script>
+
+</html>
