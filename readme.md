@@ -1,3 +1,29 @@
+
+# General Solution Description
+We are listening for post requests on /camel/push endpoint.<br/>
+The initial json I call it Input. The Input has format described in /resources/schema.json<br/>
+When an Input arrives it is first validated against /resources/schema.json then it is sent to the websockets endpoint.<br/>
+For the websockets we have configured the following endpoint: /stream/push<br/>
+Then the Input is sent asynchronously to an ActiveMq queue called gol.input. There it is stored until consumed by our consumer. <br/>
+The consumer listens on gol.input and after a message arrives it is transformed from json to pojo then transformed to another pojo called Output.<br/>
+(We use demo.gol.Game class to play the game of life with the input and the end result is the output. Please see authors notes if you are interested later. For now just skip this part).<br/>
+The output is persisted in mysql database using jpa and hibernate as implementation.
+
+# Technical Solution Description
+Technology stack is:<br/>
+Spring-boot<br/>
+ActiveMq as a temp storage and queue<br/>
+Mysql as a database<br/>
+Atmoshpere library for websockets communication<br/>
+Apache Camel as a service integration framework<br/>
+Jpa with Hibernate as an ORM<br/>
+
+Important classes:
+demo.route.FalconAssignmentRout - describes the route our Input travels in order to become an output persisted in MySql. All communication and protocols are abstracted as a camel components.
+demo.validation.JsonValidationProcessor - json validation handler, because the default one is not good.
+Credentials and configuration properties are stored in application.properties file.
+
+
 # Run the Application
 ${Home} = current directory of the project:<br/>
 -> cd ${Home}
@@ -33,31 +59,8 @@ If you don't have local mysql client, you can do the same from the docker mysql 
 To login to a docker container do:
 ->sudo docker exec -it ${container_id} bash
 
-# General Solution Description
-We are listening for post requests on /camel/push endpoint.<br/>
-The initial json I call it Input. The Input has format described in /resources/schema.json<br/>
-When an Input arrives it is first validated against /resources/schema.json then it is sent to the websockets endpoint.<br/>
-For the websockets we have configured the following endpoint: /stream/push<br/>
-Then the Input is sent asynchronously to an ActiveMq queue called gol.input. There it is stored until consumed by our consumer. <br/>
-The consumer listens on gol.input and after a message arrives it is transformed from json to pojo then transformed to another pojo called Output.<br/>
-(We use demo.gol.Game class to play the game of life with the input and the end result is the output. Please see authors notes if you are interested later. For now just skip this part).<br/>
-The output is persisted in mysql database using jpa and hibernate as implementation.
-
-# Technical Solution Description
-Technology stack is:<br/>
-Spring-boot<br/>
-ActiveMq as a temp storage and queue<br/>
-Mysql as a database<br/>
-Atmoshpere library for websockets communication<br/>
-Apache Camel as a service integration framework<br/>
-Jpa with Hibernate as an ORM<br/>
-
-Important classes:
-demo.route.FalconAssignmentRout - describes the route our Input travels in order to become an output persisted in MySql. All communication and protocols are abstracted as a camel components.
-demo.validation.JsonValidationProcessor - json validation handler, because the default one is not good.
-Credentials and configuration properties are stored in application.properties file.
-
 #Resolved Issues
+
 Issue 1:
 Currently there is a bug in the atmosphere-runtime library which produces an exception with WARN level on startup.<br/>
 Then the atmosphere continues to work as excepted.<br/>
