@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class SpringRegistrationBeanServlet {
+public class SpringSocketServlet {
 
 
     @Bean
