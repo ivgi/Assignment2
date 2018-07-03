@@ -57,22 +57,21 @@ demo.route.FalconAssignmentRout - describes the route our Input travels in order
 demo.validation.JsonValidationProcessor - json validation handler, because the default one is not good.
 Credentials and configuration properties are stored in application.properties file.
 
-#Issues
+#Resolved Issues
 Issue 1:
-Currently there is a bug in the atmosphere websockets library which produces an exception with WARN level on startup.<br/>
-Then the atmosphere continues to work as excepted. Please ignore this.<br/>
+Currently there is a bug in the atmosphere-runtime library which produces an exception with WARN level on startup.<br/>
+Then the atmosphere continues to work as excepted.<br/>
 The WARN is: "Failed to create AsyncSupport class: class org.atmosphere.container.JSR356AsyncSupport"<br/>
 Real error: The path [/stream/{path0}/] contains one or more empty segments which are is not permitted<br/>
-Then atmosphere falls back to default implementation which works good.
+Then atmosphere falls back to default implementation which works ok.
 
 Issue 2:
 When websocket connection is first established atmosphere complains:<br/>
 WebSocketProcessor$WebSocketException: Status code higher or equal than 400<br/>
 However again it falls back and establishes the connection.
 
-These problems were not present in earlier versions.
+These problems were resolved by excluding the atmosphere-runtime 2.4.21 and including 2.4.22  
 
-The issues do not affect the correct functioning of the application!
 
 # Useful Commands
 -> sudo docker-compose up<br/>

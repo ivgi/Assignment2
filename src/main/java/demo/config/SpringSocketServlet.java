@@ -33,8 +33,7 @@ public class SpringSocketServlet {
 
         Map<String, String> params = new HashMap<>();
         params.put("events", "true");
-//        params.put("org.atmosphere.container.JSR356AsyncSupport.mappingPath", "/push");
-//        params.put("org.atmosphere.websocket.suppressJSR356", "true");
+        params.put("org.atmosphere.container.JSR356AsyncSupport.mappingPath", "/stream");
         bean.setInitParameters(params);
         return bean;
     }
