@@ -59,7 +59,7 @@ If you don't have local mysql client, you can do the same from the docker mysql 
 To login to a docker container do:
 ->sudo docker exec -it ${container_id} bash
 
-#Resolved Issues
+# Resolved Issues
 
 Issue 1:
 Currently there is a bug in the atmosphere-runtime library which produces an exception with WARN level on startup.<br/>
